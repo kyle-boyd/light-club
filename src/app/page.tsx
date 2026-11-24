@@ -1,27 +1,35 @@
 import { commitment, cta, friday, hero, network, problem } from "@/content/site";
 import { SiteFooter, Wordmark } from "@/components/SiteChrome";
-import { RoughFilter, OverlappingCrews, CrossedPyramid } from "@/components/Diagrams";
+import { OverlappingCrews, CrossedPyramid } from "@/components/Diagrams";
+import { Ransom } from "@/components/Ransom";
+import { StencilBand } from "@/components/StencilBand";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <>
-      <RoughFilter />
-      <header className={styles.hero}>
+      <header className={`poster-paper ${styles.hero}`}>
         <div className={`wrap ${styles.heroTop}`}>
-          <Wordmark />
+          <Wordmark tone="dark" />
           <p className={styles.heroKicker}>{hero.kicker}</p>
         </div>
 
+        <div className={`wrap ${styles.heroHead}`}>
+          <Ransom text={hero.ransom} className={styles.heroRansom} salt={3} />
+          <h1 className={styles.heroHeadline}>
+            {hero.headline.map((line, i) => (
+              <span key={line} className={i === hero.accentLine ? styles.heroAccent : undefined}>
+                {line}
+              </span>
+            ))}
+          </h1>
+          <Ransom text={hero.sideways} className={styles.heroSideways} salt={11} />
+        </div>
+
+        <StencilBand words={hero.band} />
+
         <div className={`wrap ${styles.heroGrid}`}>
           <div className={styles.heroMain}>
-            <h1 className={styles.heroHeadline}>
-              {hero.headline.map((line, i) => (
-                <span key={line} className={i === hero.accentLine ? styles.heroAccent : undefined}>
-                  {line}
-                </span>
-              ))}
-            </h1>
             <p className={`stamp ${styles.heroStamp}`}>{hero.stamp}</p>
             <p className={styles.heroBody}>{hero.body}</p>
             <div className={styles.heroCtas}>
@@ -47,7 +55,7 @@ export default function Home() {
       </header>
 
       <main id="main">
-        <section className={`torn-top ${styles.problem}`} aria-labelledby="problem-h">
+        <section className={`torn-top poster-paper ${styles.problem}`} aria-labelledby="problem-h">
           <div className="wrap">
             <p className="label">{problem.label}</p>
             <h2 id="problem-h" className={styles.problemHeadline}>
@@ -103,6 +111,7 @@ export default function Home() {
                 ))}
               </ol>
               <p className={`stamp ${styles.noGrades}`}>{friday.noGrades}</p>
+              <Ransom text={friday.noGradesRansom} className={styles.noGradesRansom} salt={5} />
             </div>
 
             <figure className={styles.textCard}>
@@ -119,7 +128,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={`torn-top ${styles.network}`} aria-labelledby="network-h">
+        <section className={`torn-top on-ink ${styles.network}`} aria-labelledby="network-h">
           <div className="wrap">
             <p className="label">{network.label}</p>
             <h2 id="network-h" className={styles.networkHeadline}>
@@ -150,12 +159,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="invited" className={`torn-top ${styles.cta}`} aria-labelledby="cta-h">
+        <section id="invited" className={`torn-top poster-paper ${styles.cta}`} aria-label={cta.headline}>
           <div className={`wrap ${styles.ctaGrid}`}>
             <div>
-              <h2 id="cta-h" className={styles.ctaHeadline}>
-                {cta.headline}
-              </h2>
+              <Ransom as="h2" text={cta.headline} className={styles.ctaHeadline} salt={8} />
               <p className={styles.ctaBody}>{cta.body}</p>
             </div>
             <div className={styles.noLink}>

@@ -12,6 +12,11 @@ export const brand = {
 
 export const hero = {
   kicker: "An accountability movement for people who are tired of being owned",
+  // Cut-up ransom-note line above the headline.
+  ransom: "so you thought you'd check it first?",
+  // Runs sideways down the right edge on wide screens.
+  sideways: "before the scroll. before the noise.",
+  band: ["phone last", "bible first", "pray first"],
   headline: ["Your phone", "doesn't get", "the first word."],
   // The index of the headline line to print in red.
   accentLine: 2,
@@ -62,7 +67,8 @@ export const friday = {
     },
     { title: "Pray for your crew.", text: "Read everyone else's requests. Then actually pray for them." },
   ],
-  noGrades: "2/7 is welcome here. So is 7/7. Nobody's grading.",
+  noGrades: "2/7 is welcome here. So is 7/7.",
+  noGradesRansom: "nobody's grading.",
   messageTitle: "FRIDAY CHECK-IN",
   message: [
     "How many days this week did you read your physical Bible and pray before looking at your phone?",

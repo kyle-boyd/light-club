@@ -10,6 +10,11 @@ export function RoughFilter() {
         <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" />
         <feDisplacementMap in="SourceGraphic" scale="4" />
       </filter>
+      {/* Ink bleed for big type: fine-grained edge wobble, like a cheap print run. */}
+      <filter id="ink" x="-2%" y="-2%" width="104%" height="104%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="3" result="t" />
+        <feDisplacementMap in="SourceGraphic" in2="t" scale="2.2" />
+      </filter>
     </svg>
   );
 }
@@ -62,6 +67,34 @@ export function OverlappingCrews() {
         {people.map(([x, y, shared], i) => (
           <circle key={i} cx={x} cy={y} r={shared ? 9 : 7} fill={shared ? "var(--yellow)" : "currentColor"} />
         ))}
+      </g>
+    </svg>
+  );
+}
+
+/**
+ * Stencil "no phones" mark: a red disc, a phone cut out of it, a slash.
+ * The ring has bridges (gaps) the way a real cut stencil would.
+ */
+export function NoPhoneMark({ className, label }: { className?: string; label?: string }) {
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      className={className}
+      role={label ? "img" : undefined}
+      aria-label={label}
+      aria-hidden={label ? undefined : true}
+    >
+      <g filter="url(#rough)">
+        <circle cx="50" cy="50" r="46" fill="var(--red)" />
+        {/* stencil bridges */}
+        <g stroke="var(--band-bg, var(--ink))" strokeWidth="3">
+          <path d="M50 2 V10 M50 90 V98 M2 50 H10 M90 50 H98" />
+        </g>
+        <rect x="35" y="22" width="30" height="56" rx="5" fill="var(--paper)" />
+        <rect x="39" y="29" width="22" height="38" fill="var(--red)" />
+        <circle cx="50" cy="72" r="2.6" fill="var(--red)" />
+        <path d="M20 80 L80 20" stroke="var(--band-bg, var(--ink))" strokeWidth="11" strokeLinecap="butt" />
       </g>
     </svg>
   );
