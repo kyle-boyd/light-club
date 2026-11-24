@@ -8,8 +8,8 @@ import styles from "./Ransom.module.css";
  */
 
 const VARIANTS = [styles.v0, styles.v1, styles.v2, styles.v3, styles.v4, styles.v5];
-const TILTS = [-6, 3, -2, 5, -4, 1, 4, -3, 2];
-const SHIFTS = [0, -0.06, 0.05, -0.03, 0.08, -0.08, 0.02];
+const TILTS = [-3, 2, -1, 3, -2, 1, 2, -2, 1];
+const SHIFTS = [0, -0.03, 0.025, -0.015, 0.04, -0.04, 0.01];
 
 function pick<T>(arr: T[], i: number, salt: number): T {
   // Small integer hash so neighbouring letters don't move in lockstep.

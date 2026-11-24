@@ -22,7 +22,6 @@ export default function Home() {
               </span>
             ))}
           </h1>
-          <Ransom text={hero.sideways} className={styles.heroSideways} salt={11} />
         </div>
 
         <StencilBand words={hero.band} />
@@ -110,7 +109,6 @@ export default function Home() {
                 ))}
               </ol>
               <p className={`stamp ${styles.noGrades}`}>{friday.noGrades}</p>
-              <Ransom text={friday.noGradesRansom} className={styles.noGradesRansom} salt={5} />
             </div>
 
             <figure className={styles.textCard}>
@@ -161,7 +159,7 @@ export default function Home() {
         <section id="invited" className={`torn-top poster-paper ${styles.cta}`} aria-label={cta.headline}>
           <div className={`wrap ${styles.ctaGrid}`}>
             <div>
-              <Ransom as="h2" text={cta.headline} className={styles.ctaHeadline} salt={8} />
+              <h2 className={styles.ctaHeadline}>{cta.headline}</h2>
               <p className={styles.ctaBody}>{cta.body}</p>
             </div>
             <div className={styles.noLink}>

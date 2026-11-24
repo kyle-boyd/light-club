@@ -38,5 +38,4 @@
   text-transform: uppercase;
   color: var(--paper);
   letter-spacing: 0.02em;
-  filter: url(#ink);
 }

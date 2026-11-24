@@ -20,7 +20,7 @@
 }
 /* Beat-up typewriter, lowercase */
 .v1 {
-  font-family: var(--font-elite);
+  font-family: var(--font-type);
   text-transform: lowercase;
   font-size: 1.08em;
 }
