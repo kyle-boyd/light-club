@@ -10,12 +10,15 @@ export const brand = {
   footerJoke: "Not affiliated with your phone.",
 };
 
+// Zine-style issue line under the masthead.
+export const masthead = ["Vol. 1", "No. 1", "Every Friday morning", "Free. Seriously."];
+
 export const hero = {
   kicker: "An accountability movement for people who are tired of being owned",
   // Cut-up ransom-note line above the headline.
   ransom: "so you thought you'd check it first?",
   // Runs sideways down the right edge on wide screens.
-  sideways: "before the scroll. before the noise.",
+  sideways: "before the scroll.",
   band: ["phone last", "bible first", "pray first"],
   headline: ["Your phone", "doesn't get", "the first word."],
   // The index of the headline line to print in red.

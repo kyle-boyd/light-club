@@ -8,7 +8,9 @@
 }
 .prose h1 {
   font-size: clamp(3.4rem, 12vw, 6rem);
-  color: var(--red);
+  font-family: var(--font-stencil);
+  font-weight: 900;
+  filter: url(#ink);
   margin-bottom: 16px;
 }
 .prose h2 {
@@ -22,8 +24,8 @@
   margin-bottom: 6px;
 }
 .prose a {
-  color: var(--red-dark);
   font-weight: 700;
+  text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
 .lede {

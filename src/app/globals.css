@@ -1,17 +1,16 @@
 /* ------------------------------------------------------------------
-   Light Club design tokens
-   Contrast notes (WCAG): paper-on-red and red-on-paper are ~4.5:1 (AA for
-   body text). Red on ink is ~3.3:1, so it's only used for large display type.
+   Light Club design tokens: black and white, like a photocopied zine.
+   Every text pairing is ink on paper or paper on ink (well past WCAG AA).
+   There is no brand colour; --grey is only for shadows and rules.
 ------------------------------------------------------------------- */
 :root {
-  --ink: #111111;
-  --ink-soft: #2a2826;
-  --paper: #ebe5d6;
-  --paper-dark: #d8cfba;
-  --red: #c8211a;
-  --red-dark: #9e140e;
-  --yellow: #eaff2b;
-  --tape: rgba(238, 230, 196, 0.78);
+  --ink: #0e0e0e;
+  --ink-soft: #2a2a2a;
+  --grey: #8d8c87;
+  --paper: #ebeae4;
+  --paper-dark: #d7d6cf;
+  --paper-white: #f8f7f2;
+  --tape: rgba(240, 239, 230, 0.8);
 
   --font-display: var(--font-anton), Impact, "Arial Narrow Bold", sans-serif;
   --font-body: var(--font-archivo), system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -21,7 +20,8 @@
 
   --gutter: clamp(16px, 4vw, 56px);
   --max: 1200px;
-  --focus: 3px solid var(--yellow);
+
+  --font-serif: var(--font-tinos-face), "Times New Roman", Times, serif;
 
   /* Photocopy grain: fractal noise rendered once as an SVG tile. */
   --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 1.1'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
@@ -57,7 +57,7 @@ body::after {
   inset: 0;
   pointer-events: none;
   background-image: var(--grain);
-  opacity: 0.13;
+  opacity: 0.2;
   mix-blend-mode: multiply;
   z-index: 100;
 }
@@ -82,7 +82,7 @@ a {
 }
 
 :focus-visible {
-  outline: var(--focus);
+  outline: 3px solid currentColor;
   outline-offset: 3px;
 }
 
@@ -91,8 +91,8 @@ a {
   left: 12px;
   top: -100px;
   z-index: 200;
-  background: var(--yellow);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
   padding: 10px 14px;
   font-weight: 700;
 }
@@ -118,24 +118,26 @@ a {
   padding-inline: var(--gutter);
 }
 
-/* Typewriter label, e.g. "THE PROBLEM" */
+/* Zine page header: a heavy rule, the section name, and a page number. */
+main {
+  counter-reset: zine-page 1;
+}
 .label {
-  display: inline-block;
+  counter-increment: zine-page;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 4px solid currentColor;
+  padding-top: 8px;
+  margin: 0 0 clamp(22px, 4vw, 40px);
   font-family: var(--font-elite);
-  font-size: 1.05rem;
+  font-size: 1rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 1.1rem;
 }
-.label::before {
-  content: "";
-  display: inline-block;
-  width: 0.7em;
-  height: 0.7em;
-  margin-right: 0.5em;
-  background: var(--red);
-  vertical-align: -0.02em;
-  rotate: 8deg;
+.label::after {
+  content: "pg. " counter(zine-page, decimal-leading-zero);
+  letter-spacing: 0.04em;
 }
 
 /* Rubber stamp. Speckle mask fakes uneven ink. */
@@ -183,23 +185,26 @@ a {
   text-decoration: none;
   letter-spacing: 0.02em;
   border: 3px solid var(--ink);
-  background: var(--red);
+  background: var(--ink);
   color: var(--paper);
-  box-shadow: 5px 5px 0 var(--ink);
+  box-shadow: 5px 5px 0 var(--grey);
   cursor: pointer;
   transition: transform 80ms ease, box-shadow 80ms ease;
 }
 .btn:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0 var(--ink);
+  box-shadow: 7px 7px 0 var(--grey);
 }
 .btn:active {
   transform: translate(3px, 3px);
-  box-shadow: 2px 2px 0 var(--ink);
+  box-shadow: 2px 2px 0 var(--grey);
+}
+.btn:focus-visible {
+  outline-color: var(--ink);
 }
 .btn--ghost {
-  background: transparent;
-  color: inherit;
+  background: var(--paper-white);
+  color: var(--ink);
   border-color: currentColor;
   box-shadow: 5px 5px 0 currentColor;
 }
@@ -218,16 +223,15 @@ a {
   padding-top: 12px;
 }
 
-/* Cheap poster stock: fold creases, toner smudge at the edges, coffee-ish
-   blotches. Layered gradients only, so it scales and costs nothing. */
+/* Photocopied newsprint: fold creases, toner streaks from a dirty drum,
+   darker edges where the lid didn't close. Gradients only. */
 .poster-paper {
   background-color: var(--paper);
   background-image:
-    linear-gradient(90deg, transparent calc(50% - 1px), rgba(60, 45, 25, 0.13) 50%, rgba(255, 255, 255, 0.45) calc(50% + 1px), transparent calc(50% + 3px)),
-    linear-gradient(180deg, transparent calc(45% - 1px), rgba(60, 45, 25, 0.1) 45%, rgba(255, 255, 255, 0.4) calc(45% + 1px), transparent calc(45% + 3px)),
-    radial-gradient(ellipse 40% 30% at 88% 12%, rgba(120, 90, 40, 0.1), transparent 70%),
-    radial-gradient(ellipse 30% 22% at 8% 85%, rgba(120, 90, 40, 0.09), transparent 70%),
-    radial-gradient(ellipse at center, transparent 55%, rgba(50, 35, 15, 0.16) 100%);
+    linear-gradient(90deg, transparent calc(50% - 1px), rgba(0, 0, 0, 0.12) 50%, rgba(255, 255, 255, 0.5) calc(50% + 1px), transparent calc(50% + 3px)),
+    linear-gradient(180deg, transparent calc(45% - 1px), rgba(0, 0, 0, 0.09) 45%, rgba(255, 255, 255, 0.45) calc(45% + 1px), transparent calc(45% + 3px)),
+    linear-gradient(90deg, transparent 17%, rgba(0, 0, 0, 0.05) 17.2%, transparent 17.5%, transparent 71%, rgba(0, 0, 0, 0.06) 71.15%, transparent 71.4%, transparent 88%, rgba(0, 0, 0, 0.035) 88.3%, transparent 88.8%),
+    radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.17) 100%);
 }
 
 /* Halftone dot field. Use on a pseudo-element. */

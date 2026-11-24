@@ -26,7 +26,7 @@ export function CrossedPyramid() {
         <path d="M80 14 L146 122 L14 122 Z" />
         <path d="M54 56 H106 M34 90 H126" />
       </g>
-      <g filter="url(#rough)" stroke="var(--red)" strokeWidth="9" strokeLinecap="round">
+      <g filter="url(#rough)" stroke="currentColor" strokeWidth="10" strokeLinecap="round">
         <path d="M18 18 L142 130" />
         <path d="M142 18 L18 130" />
       </g>
@@ -65,7 +65,15 @@ export function OverlappingCrews() {
       </g>
       <g filter="url(#rough)">
         {people.map(([x, y, shared], i) => (
-          <circle key={i} cx={x} cy={y} r={shared ? 9 : 7} fill={shared ? "var(--yellow)" : "currentColor"} />
+          <circle
+            key={i}
+            cx={x}
+            cy={y}
+            r={shared ? 9 : 7}
+            fill={shared ? "none" : "currentColor"}
+            stroke={shared ? "currentColor" : "none"}
+            strokeWidth={3}
+          />
         ))}
       </g>
     </svg>
@@ -73,7 +81,7 @@ export function OverlappingCrews() {
 }
 
 /**
- * Stencil "no phones" mark: a red disc, a phone cut out of it, a slash.
+ * Stencil "no phones" mark: a paper disc, a phone cut out of it, a slash.
  * The ring has bridges (gaps) the way a real cut stencil would.
  */
 export function NoPhoneMark({ className, label }: { className?: string; label?: string }) {
@@ -86,15 +94,16 @@ export function NoPhoneMark({ className, label }: { className?: string; label?: 
       aria-hidden={label ? undefined : true}
     >
       <g filter="url(#rough)">
-        <circle cx="50" cy="50" r="46" fill="var(--red)" />
+        <circle cx="50" cy="50" r="46" fill="var(--paper)" />
         {/* stencil bridges */}
         <g stroke="var(--band-bg, var(--ink))" strokeWidth="3">
           <path d="M50 2 V10 M50 90 V98 M2 50 H10 M90 50 H98" />
         </g>
-        <rect x="35" y="22" width="30" height="56" rx="5" fill="var(--paper)" />
-        <rect x="39" y="29" width="22" height="38" fill="var(--red)" />
-        <circle cx="50" cy="72" r="2.6" fill="var(--red)" />
-        <path d="M20 80 L80 20" stroke="var(--band-bg, var(--ink))" strokeWidth="11" strokeLinecap="butt" />
+        <rect x="35" y="22" width="30" height="56" rx="5" fill="var(--ink)" />
+        <rect x="39" y="29" width="22" height="38" fill="var(--paper)" />
+        <circle cx="50" cy="72" r="2.6" fill="var(--paper)" />
+        <path d="M20 80 L80 20" stroke="var(--band-bg, var(--ink))" strokeWidth="14" strokeLinecap="butt" />
+        <path d="M20 80 L80 20" stroke="var(--paper)" strokeWidth="4" strokeLinecap="butt" />
       </g>
     </svg>
   );

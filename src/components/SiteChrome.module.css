@@ -7,7 +7,7 @@
   background: var(--paper);
   padding: 6px 10px 4px;
   transform: rotate(-2deg);
-  box-shadow: 4px 4px 0 var(--red);
+  box-shadow: 4px 4px 0 var(--grey);
 }
 .wordmarkDark {
   color: var(--paper);
@@ -24,7 +24,6 @@
   font-family: var(--font-type);
   font-size: 0.7rem;
   font-weight: 700;
-  color: var(--red);
 }
 
 .footer {
@@ -60,5 +59,56 @@
   text-underline-offset: 4px;
 }
 .footerLinks a:hover {
-  color: var(--yellow);
+  text-decoration-thickness: 3px;
+}
+
+/* ---------- Masthead ---------- */
+.masthead {
+  border-top: 6px solid var(--ink);
+  padding-top: 10px;
+}
+.mastLink {
+  display: block;
+  color: var(--ink);
+}
+.mastSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: url(#ink);
+}
+.mastText {
+  font-family: var(--font-display);
+  font-size: 196px;
+  fill: currentColor;
+}
+.mastRule {
+  margin-top: 8px;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 6px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 24px;
+  font-family: var(--font-elite);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.issue {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 0;
+}
+.issue li + li::before {
+  content: "•";
+  margin: 0 0.6em;
+}
+.mastKicker {
+  margin: 0;
 }

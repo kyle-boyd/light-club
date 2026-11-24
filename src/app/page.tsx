@@ -1,5 +1,5 @@
 import { commitment, cta, friday, hero, network, problem } from "@/content/site";
-import { SiteFooter, Wordmark } from "@/components/SiteChrome";
+import { Masthead, SiteFooter } from "@/components/SiteChrome";
 import { OverlappingCrews, CrossedPyramid } from "@/components/Diagrams";
 import { Ransom } from "@/components/Ransom";
 import { StencilBand } from "@/components/StencilBand";
@@ -10,8 +10,7 @@ export default function Home() {
     <>
       <header className={`poster-paper ${styles.hero}`}>
         <div className={`wrap ${styles.heroTop}`}>
-          <Wordmark tone="dark" />
-          <p className={styles.heroKicker}>{hero.kicker}</p>
+          <Masthead kicker={hero.kicker} />
         </div>
 
         <div className={`wrap ${styles.heroHead}`}>
@@ -19,7 +18,7 @@ export default function Home() {
           <h1 className={styles.heroHeadline}>
             {hero.headline.map((line, i) => (
               <span key={line} className={i === hero.accentLine ? styles.heroAccent : undefined}>
-                {line}
+                {i === hero.accentLine ? <span>{line}</span> : line}
               </span>
             ))}
           </h1>
