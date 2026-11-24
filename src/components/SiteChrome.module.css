@@ -1,0 +1,64 @@
+.wordmark {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 2px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--paper);
+  padding: 6px 10px 4px;
+  transform: rotate(-2deg);
+  box-shadow: 4px 4px 0 var(--red);
+}
+.wordmarkDark {
+  color: var(--paper);
+  background: var(--ink);
+}
+.wordmarkText {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.wordmarkTm {
+  font-family: var(--font-type);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding-block: 28px 36px;
+  font-family: var(--font-type);
+  font-size: 0.95rem;
+}
+.footerInner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  justify-content: space-between;
+  align-items: center;
+}
+.footerBrand {
+  margin: 0;
+  font-weight: 700;
+}
+.footerBrand span {
+  font-weight: 400;
+  opacity: 0.85;
+}
+.footerLinks {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+.footerLinks a {
+  text-underline-offset: 4px;
+}
+.footerLinks a:hover {
+  color: var(--yellow);
+}
