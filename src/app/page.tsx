@@ -1,4 +1,4 @@
-import { commitment, cta, friday, hero, network, problem } from "@/content/site";
+import { cta, friday, hero, network, problem } from "@/content/site";
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { OverlappingCrews, CrossedPyramid } from "@/components/Diagrams";
 import styles from "./page.module.css";
@@ -18,13 +18,21 @@ export default function Home() {
                 </span>
               ))}
             </h1>
-            <p className={styles.heroBody}>{hero.body}</p>
+            <div id="the-deal" className={styles.whatWeDo}>
+              <h2 className={styles.whatHeading}>{hero.whatWeDo.heading}</h2>
+              <div className={styles.prose}>
+                {hero.whatWeDo.paragraphs.map((para) => (
+                  <p key={para}>{para}</p>
+                ))}
+              </div>
+              <p className={styles.closer}>{hero.whatWeDo.closer}</p>
+            </div>
             <p className={styles.heroScheme}>{hero.stamp}</p>
             <div className={styles.heroCtas}>
               <a className="btn" href="#invited">
                 {hero.primaryCta} <span aria-hidden="true">→</span>
               </a>
-              <a className="btn btn--ghost" href="#the-deal">
+              <a className="btn btn--ghost" href="#fridays">
                 {hero.secondaryCta}
               </a>
             </div>
@@ -43,18 +51,6 @@ export default function Home() {
               ))}
             </div>
             <p className={styles.closer}>{problem.closer}</p>
-          </div>
-        </section>
-
-        <section id="the-deal" className={`on-ink ${styles.section} ${styles.deal}`} aria-label={commitment.name}>
-          <div className="wrap">
-            <p className={styles.dealLead}>{commitment.paragraphs[0]}</p>
-            <div className={styles.prose}>
-              {commitment.paragraphs.slice(1).map((para) => (
-                <p key={para}>{para}</p>
-              ))}
-            </div>
-            <p className={styles.closer}>{commitment.closer}</p>
           </div>
         </section>
 

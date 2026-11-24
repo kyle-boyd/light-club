@@ -16,10 +16,17 @@
 .accent {
   color: var(--red);
 }
-.heroBody {
-  max-width: 52ch;
-  font-size: var(--step-1);
-  line-height: 1.7;
+/* "Here's what we do." block under the headline. */
+.whatWeDo {
+  scroll-margin-top: 16px;
+  margin-bottom: 28px;
+}
+.whatHeading {
+  font-size: var(--step-2);
+  margin-top: clamp(8px, 2vw, 16px);
+}
+.whatWeDo .prose {
+  margin-block: 16px 24px;
 }
 .heroScheme {
   display: inline;
@@ -42,9 +49,18 @@
   .hero {
     padding-top: 22px;
   }
-  .heroBody {
-    line-height: 1.55;
-  }
+  /* "Here's what we do." block under the headline. */
+.whatWeDo {
+  scroll-margin-top: 16px;
+  margin-bottom: 28px;
+}
+.whatHeading {
+  font-size: var(--step-2);
+  margin-top: clamp(8px, 2vw, 16px);
+}
+.whatWeDo .prose {
+  margin-block: 16px 24px;
+}
   .heroCtas {
     margin-top: 20px;
   }
@@ -92,10 +108,18 @@
 }
 
 /* Problem */
-/* The problem's heading is a full sentence, so it runs a size smaller. */
+/* The problem's heading is a full sentence: normal width, sentence case and
+   looser leading so it reads as a statement rather than a cramped poster line. */
 .h2Long {
   font-size: var(--step-3);
-  max-width: 26ch;
+  font-weight: 800;
+  font-stretch: 100%;
+  text-transform: none;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  word-spacing: 0.04em;
+  max-width: 24ch;
+  text-wrap: balance;
 }
 .prose {
   max-width: 60ch;
@@ -111,25 +135,6 @@
   font-size: var(--step-2);
   line-height: 1.2;
   letter-spacing: -0.01em;
-  text-wrap: balance;
-}
-
-/* The deal */
-.deal {
-  position: relative;
-  background: var(--ink);
-  color: var(--paper);
-  border-top-color: var(--ink);
-}
-/* No visible heading: the commitment itself is the lead, set large. */
-.dealLead {
-  max-width: 22ch;
-  margin: 0;
-  font-family: var(--font-head);
-  font-weight: 800;
-  font-size: var(--step-3);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 

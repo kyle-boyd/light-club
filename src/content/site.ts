@@ -23,9 +23,18 @@ export const hero = {
   // One entry per line, so the breaks are deliberate at every width.
   // The last line is printed in red.
   headline: ["Your phone", "doesn't get the", "first word."],
+  // What we do: the commitment, under the headline. (The nav's "The deal" links here.)
+  whatWeDo: {
+    heading: "Here's what we do.",
+    paragraphs: [
+      "Every morning, before looking at or using our phones, we read a physical Bible and pray.",
+      "Every Friday, we tell our crew how it went. We share what's going on in our lives, ask for prayer, and actually pray for each other.",
+      "We do it with a few people we know. You join a crew with someone who invited you. Then you invite your friends to start their own.",
+      "That's it.",
+    ],
+    closer: "God gets the first word. We're trying to live like it.",
+  },
   stamp: "We're taking it back. With a pyramid scheme.",
-  body:
-    "Every day, before looking at or using your phone, you read a physical Bible and you pray. On Friday mornings you tell a few friends how it went. That's it. That's the club.",
   primaryCta: "I have an invitation",
   secondaryCta: "How it works",
 };
@@ -42,19 +51,6 @@ export const problem = {
   closer: "We're trying to change that.",
 };
 
-export const commitment = {
-  // Not shown: the section has no visible heading. Used to name it for screen readers.
-  name: "The deal",
-  // The first paragraph is set large; it's the commitment itself.
-  paragraphs: [
-    "Every morning, before looking at or using our phones, we read a physical Bible and pray.",
-    "Every Friday, we tell our crew how it went. We share what's going on in our lives, ask for prayer, and actually pray for each other.",
-    "We do it with a few people we know. You join a crew with someone who invited you. Then you invite your friends to start their own.",
-    "That's it.",
-  ],
-  closer: "God gets the first word. We're trying to live like it.",
-};
-
 export const friday = {
   label: "The Friday check-in",
   headline: "Friday morning, you text your crew.",
@@ -63,7 +59,7 @@ export const friday = {
     {
       // Original wording, kept as written on purpose.
       title: "Share 1 prayer request about yourself",
-      text: "(not your neighbors' aunts dog, something YOU need your brothers and sisters to pray for YOU).",
+      text: "(not your neighbor's aunt's dog, something YOU need your brothers and sisters to pray for YOU).",
     },
     { title: "Pray for your crew.", text: "Read everyone else's requests. Then actually pray for them." },
   ],
