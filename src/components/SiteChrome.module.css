@@ -1,36 +1,129 @@
-.wordmark {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 2px;
-  text-decoration: none;
-  color: var(--ink);
-  background: var(--paper);
-  padding: 6px 10px 4px;
-  transform: rotate(-2deg);
-  box-shadow: 4px 4px 0 var(--grey);
-}
-.wordmarkDark {
-  color: var(--paper);
+/* ---------- Ticker strip ---------- */
+.ticker {
   background: var(--ink);
-}
-.wordmarkText {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  line-height: 1;
+  color: var(--paper);
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 10px 0;
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-stretch: 125%;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  font-size: clamp(0.85rem, 1.6vw, 1.15rem);
+  letter-spacing: 0.01em;
 }
-.wordmarkTm {
-  font-family: var(--font-type);
-  font-size: 0.7rem;
-  font-weight: 700;
+.ticker span {
+  flex: none;
+  padding-inline: 1.2em;
+}
+.ticker span::after {
+  content: "•";
+  margin-left: 2.4em;
 }
 
+/* ---------- Boxed header bar ---------- */
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: var(--rule);
+}
+.wordmark {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  padding: 14px var(--gutter) 14px 16px;
+  text-decoration: none;
+  min-height: 72px;
+}
+.wordmarkBox {
+  display: inline-flex;
+  border: var(--rule);
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.wmInvert,
+.wmPlain {
+  padding: 8px 10px 6px;
+}
+.wmInvert {
+  background: var(--ink);
+  color: var(--paper);
+}
+.nav {
+  flex: 1 1 auto;
+  display: flex;
+}
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex: 1;
+}
+.nav li {
+  flex: 1 1 auto;
+  display: flex;
+}
+.nav a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 18px;
+  min-height: 56px;
+  border-left: var(--rule);
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.nav a:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.nav a.navInvert {
+  background: var(--ink);
+  color: var(--paper);
+}
+.nav a.navInvert:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+.nav a:focus-visible {
+  outline-offset: -6px;
+}
+
+/* Phones: wordmark on its own row, nav as a 2x2 grid of boxes underneath. */
+@media (max-width: 760px) {
+  .nav {
+    flex-basis: 100%;
+    border-top: var(--rule);
+  }
+  .nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .nav li:nth-child(odd) a {
+    border-left: 0;
+  }
+  .nav li:nth-child(n + 3) a {
+    border-top: var(--rule);
+  }
+}
+
+/* ---------- Footer ---------- */
 .footer {
   background: var(--ink);
   color: var(--paper);
   padding-block: 28px 36px;
-  font-family: var(--font-type);
   font-size: 0.95rem;
 }
 .footerInner {
@@ -46,7 +139,6 @@
 }
 .footerBrand span {
   font-weight: 400;
-  opacity: 0.85;
 }
 .footerLinks {
   list-style: none;
@@ -59,56 +151,6 @@
   text-underline-offset: 4px;
 }
 .footerLinks a:hover {
-  text-decoration-thickness: 3px;
-}
-
-/* ---------- Masthead ---------- */
-.masthead {
-  border-top: 6px solid var(--ink);
-  padding-top: 10px;
-}
-.mastLink {
-  display: block;
+  background: var(--paper);
   color: var(--ink);
-}
-.mastSvg {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-  filter: url(#ink);
-}
-.mastText {
-  font-family: var(--font-display);
-  font-size: 196px;
-  fill: currentColor;
-}
-.mastRule {
-  margin-top: 8px;
-  border-top: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  padding: 6px 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 4px 24px;
-  font-family: var(--font-type);
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.issue {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px 0;
-}
-.issue li + li::before {
-  content: "•";
-  margin: 0 0.6em;
-}
-.mastKicker {
-  margin: 0;
 }

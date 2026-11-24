@@ -10,17 +10,20 @@ export const brand = {
   footerJoke: "Not affiliated with your phone.",
 };
 
-// Zine-style issue line under the masthead.
-export const masthead = ["Vol. 1", "No. 1", "Every Friday morning", "Free. Seriously."];
+// The black strip across the top of every page.
+export const ticker = ["Phone last", "Bible first", "Pray first", "Fridays: X/7", "No app", "No leaders"];
+
+// Header navigation. The last item is shown inverted.
+export const nav = [
+  { label: "The deal", href: "/#the-deal" },
+  { label: "Fridays", href: "/#fridays" },
+  { label: "The network", href: "/#network" },
+  { label: "Got a link?", href: "/#invited" },
+];
 
 export const hero = {
   kicker: "An accountability movement for people who are tired of being owned",
-  // Cut-up ransom-note line above the headline.
-  ransom: "so you thought you'd check it first?",
-  band: ["phone last", "bible first", "pray first"],
-  headline: ["Your phone", "doesn't get", "the first word."],
-  // The index of the headline line to print in red.
-  accentLine: 2,
+  headline: "Your phone doesn't get the first word.",
   stamp: "We're taking it back. With a pyramid scheme.",
   body:
     "Every day, before you look at or touch your phone, you read a physical Bible and you pray. On Friday mornings you tell a few friends how it went. That's it. That's the club.",
@@ -81,7 +84,7 @@ export const friday = {
 
 export const network = {
   label: "The network",
-  headline: ["The world's least", "profitable pyramid", "scheme."],
+  headline: "The world's least profitable pyramid scheme.",
   body:
     "When you join, you get five invitation links. Give them to people you'd actually want to hear from on a Friday morning. Send them by text, email, or a napkin. Up to six people make a crew, and crews overlap, so the whole thing is a mess of circles, not a pyramid.",
   diagram: {
@@ -97,6 +100,7 @@ export const network = {
 };
 
 export const cta = {
+  label: "How to join",
   headline: "Got a link?",
   body: "Tap the invitation link a friend sent you. That's the only door.",
   noLinkTitle: "No link?",

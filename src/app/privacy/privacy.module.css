@@ -1,0 +1,24 @@
+.prose {
+  max-width: 760px;
+  padding-block: 56px 96px;
+}
+.prose h1 {
+  font-size: clamp(2.6rem, 9vw, 4.8rem);
+  margin-bottom: 20px;
+}
+.prose h2 {
+  font-size: 1.5rem;
+  margin: 44px 0 14px;
+  padding-top: 14px;
+  border-top: var(--rule);
+}
+.prose ul {
+  padding-left: 1.2em;
+}
+.prose li {
+  margin-bottom: 6px;
+}
+.lede {
+  font-size: 1.15rem;
+  font-weight: 700;
+}

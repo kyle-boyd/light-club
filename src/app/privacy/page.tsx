@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { SiteFooter, Wordmark } from "@/components/SiteChrome";
+import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { brand } from "@/content/site";
 import { config } from "@/lib/config";
-import styles from "../prose.module.css";
+import styles from "./privacy.module.css";
 
 export const metadata: Metadata = { title: `Privacy · ${brand.name}` };
 
 export default function PrivacyPage() {
   return (
     <>
-      <header className={styles.top}>
-        <div className="wrap">
-          <Wordmark tone="dark" />
-        </div>
-      </header>
-      <main id="main" className={`wrap ${styles.prose}`}>
+      <SiteHeader />
+      <main id="main" className={`wrap prose ${styles.prose}`}>
         <h1>Privacy</h1>
         <p className={styles.lede}>Short version: we collect almost nothing, and we don&apos;t sell or share it.</p>
 
