@@ -25,7 +25,6 @@ export const hero = {
   headline: ["Your phone", "doesn't get the", "first word."],
   // What we do: the commitment, under the headline. (The nav's "The deal" links here.)
   whatWeDo: {
-    heading: "Here's what we do.",
     paragraphs: [
       "Every morning, before looking at or using our phones, we read a physical Bible and pray.",
       "Every Friday, we tell our crew how it went. We share what's going on in our lives, ask for prayer, and actually pray for each other.",

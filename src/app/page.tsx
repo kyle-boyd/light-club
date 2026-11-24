@@ -19,7 +19,6 @@ export default function Home() {
               ))}
             </h1>
             <div id="the-deal" className={styles.whatWeDo}>
-              <h2 className={styles.whatHeading}>{hero.whatWeDo.heading}</h2>
               <div className={styles.prose}>
                 {hero.whatWeDo.paragraphs.map((para) => (
                   <p key={para}>{para}</p>
