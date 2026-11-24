@@ -21,58 +21,49 @@ export const nav = [
 export const hero = {
   kicker: "An accountability movement for people who are tired of being owned",
   // One entry per line, so the breaks are deliberate at every width.
-  // The last line gets the red marker swipe.
+  // The last line is printed in red.
   headline: ["Your phone", "doesn't get the", "first word."],
   stamp: "We're taking it back. With a pyramid scheme.",
   body:
-    "Every day, before you look at or touch your phone, you read a physical Bible and you pray. On Friday mornings you tell a few friends how it went. That's it. That's the club.",
+    "Every day, before looking at or using your phone, you read a physical Bible and you pray. On Friday mornings you tell a few friends how it went. That's it. That's the club.",
   primaryCta: "I have an invitation",
   secondaryCta: "How it works",
-  // Hero art. STAND-IN: cropped from a design mockup; replace with a
-  // high-res version (no cross on the Bible) at the same path.
-  // If the file is missing, the hero falls back to a single column.
-  illustration: {
-    src: "/illustrations/hero.jpg",
-    width: 1200,
-    height: 622,
-    alt: "Photocopied collage: a worn Bible and a smartphone side by side, with a red X slashed behind them.",
-  },
 };
 
 export const problem = {
   label: "The problem",
-  note: "every. single. time.",
-  headline: "It's not just how much time it takes. It's that it gets there first.",
-  moments: [
-    { time: "6:02 AM", text: "Before your feet hit the floor." },
-    { time: "12:15 PM", text: "Thirty seconds in line. Out it comes." },
-    { time: "6:40 PM", text: "At dinner, between bites, across from people you love." },
-    { time: "11:48 PM", text: "When you should be asleep." },
+  headline:
+    "We've allowed something that was supposed to serve us to determine what gets our attention, even before we've decided what matters.",
+  paragraphs: [
+    "We've built a world where there's always another screen to look at, another notification to check, another distraction waiting. The moment we're bored, we reach for it. The moment things get quiet, we fill it.",
+    "Before we've spoken to God, our families, or even thought about what kind of day we're going to have, we've already given our attention away.",
+    "It's not that technology or screens are inherently bad. It's that we've stopped choosing when they deserve our attention.",
   ],
-  closer:
-    "Light Club is one small refusal: a screen doesn't get the first claim on you. God does.",
+  closer: "We're trying to change that.",
 };
 
 export const commitment = {
-  label: "The deal",
-  stamp: "7 days a week",
-  headline: "Every day. Before the phone.",
-  items: [
-    { n: "01", title: "Read a physical Bible.", note: "Paper. Pages. The kind with no notifications." },
-    { n: "02", title: "Pray.", note: "Your own words. As long or short as you've got." },
+  // Not shown: the section has no visible heading. Used to name it for screen readers.
+  name: "The deal",
+  // The first paragraph is set large; it's the commitment itself.
+  paragraphs: [
+    "Every morning, before looking at or using our phones, we read a physical Bible and pray.",
+    "Every Friday, we tell our crew how it went. We share what's going on in our lives, ask for prayer, and actually pray for each other.",
+    "We do it with a few people we know. You join a crew with someone who invited you. Then you invite your friends to start their own.",
+    "That's it.",
   ],
-  fine:
-    "Seven days a week. No reading plan, no minimum, no devotional to buy. Just do it before you look at or use your phone.",
+  closer: "God gets the first word. We're trying to live like it.",
 };
 
 export const friday = {
-  label: "The Friday ritual",
+  label: "The Friday check-in",
   headline: "Friday morning, you text your crew.",
   steps: [
     { title: "Your score.", text: "How many of the last seven days you did it. Honestly. 0 to 7." },
     {
-      title: "One prayer request.",
-      text: "About you. Not your coworker's cousin's dog. Something real.",
+      // Original wording, kept as written on purpose.
+      title: "Share 1 prayer request about yourself",
+      text: "(not your neighbors' aunts dog, something YOU need your brothers and sisters to pray for YOU).",
     },
     { title: "Pray for your crew.", text: "Read everyone else's requests. Then actually pray for them." },
   ],

@@ -2,12 +2,6 @@ import { commitment, cta, friday, hero, network, problem } from "@/content/site"
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { OverlappingCrews, CrossedPyramid } from "@/components/Diagrams";
 import styles from "./page.module.css";
-import Image from "next/image";
-import { existsSync } from "node:fs";
-import path from "node:path";
-
-// Checked at build time: the hero only gets a second column if the art exists.
-const hasIllustration = existsSync(path.join(process.cwd(), "public", hero.illustration.src));
 
 export default function Home() {
   return (
@@ -16,84 +10,51 @@ export default function Home() {
 
       <main id="main">
         <section className={styles.hero} aria-labelledby="hero-h">
-          <div className={`wrap ${styles.heroGrid} ${hasIllustration ? styles.heroWithArt : ""}`}>
-            <div>
-              <h1 id="hero-h" className={styles.heroHeadline}>
-                {hero.headline.map((line, i) => (
-                  <span key={line} className={styles.heroLine}>
-                    {i === hero.headline.length - 1 ? <span className={styles.swipe}>{line}</span> : line}{" "}
-                  </span>
-                ))}
-              </h1>
-              <p className={styles.heroBody}>{hero.body}</p>
-              <p className={styles.heroScheme}>{hero.stamp}</p>
-              <div className={styles.heroCtas}>
-                <a className="btn" href="#invited">
-                  {hero.primaryCta} <span aria-hidden="true">→</span>
-                </a>
-                <a className="btn btn--ghost" href="#the-deal">
-                  {hero.secondaryCta}
-                </a>
-              </div>
+          <div className="wrap">
+            <h1 id="hero-h" className={styles.heroHeadline}>
+              {hero.headline.map((line, i) => (
+                <span key={line} className={styles.heroLine}>
+                  {i === hero.headline.length - 1 ? <span className={styles.accent}>{line}</span> : line}{" "}
+                </span>
+              ))}
+            </h1>
+            <p className={styles.heroBody}>{hero.body}</p>
+            <p className={styles.heroScheme}>{hero.stamp}</p>
+            <div className={styles.heroCtas}>
+              <a className="btn" href="#invited">
+                {hero.primaryCta} <span aria-hidden="true">→</span>
+              </a>
+              <a className="btn btn--ghost" href="#the-deal">
+                {hero.secondaryCta}
+              </a>
             </div>
-
-            {hasIllustration ? (
-              <figure className={styles.illustration}>
-                <Image
-                  src={hero.illustration.src}
-                  alt={hero.illustration.alt}
-                  width={hero.illustration.width}
-                  height={hero.illustration.height}
-                  priority
-                  sizes="(min-width: 900px) 45vw, 100vw"
-                />
-              </figure>
-            ) : null}
           </div>
         </section>
 
         <section className={styles.section} aria-labelledby="problem-h">
           <div className="wrap">
             <p className="label">{problem.label}</p>
-            <h2 id="problem-h" className={styles.h2}>
+            <h2 id="problem-h" className={`${styles.h2} ${styles.h2Long}`}>
               {problem.headline}
             </h2>
-            <div className={styles.momentsWrap}>
-              <p className={`hand-note ${styles.problemNote}`}>{problem.note}</p>
-              <ol className={styles.moments}>
-              {problem.moments.map((m) => (
-                <li key={m.time}>
-                  <span className={styles.momentTime}>{m.time}</span>
-                  <span>{m.text}</span>
-                </li>
+            <div className={styles.prose}>
+              {problem.paragraphs.map((para) => (
+                <p key={para}>{para}</p>
               ))}
-              </ol>
             </div>
             <p className={styles.closer}>{problem.closer}</p>
           </div>
         </section>
 
-        <section id="the-deal" className={`on-ink ${styles.section} ${styles.deal}`} aria-labelledby="deal-h">
+        <section id="the-deal" className={`on-ink ${styles.section} ${styles.deal}`} aria-label={commitment.name}>
           <div className="wrap">
-            <p className={`stamp ${styles.dealStamp}`}>{commitment.stamp}</p>
-            <p className="label">{commitment.label}</p>
-            <h2 id="deal-h" className={styles.h2}>
-              {commitment.headline}
-            </h2>
-            <ol className={styles.dealItems}>
-              {commitment.items.map((item) => (
-                <li key={item.n}>
-                  <span className={styles.dealNum} aria-hidden="true">
-                    {item.n}
-                  </span>
-                  <div>
-                    <h3 className={styles.dealTitle}>{item.title}</h3>
-                    <p className={styles.dealNote}>{item.note}</p>
-                  </div>
-                </li>
+            <p className={styles.dealLead}>{commitment.paragraphs[0]}</p>
+            <div className={styles.prose}>
+              {commitment.paragraphs.slice(1).map((para) => (
+                <p key={para}>{para}</p>
               ))}
-            </ol>
-            <p className={styles.dealFine}>{commitment.fine}</p>
+            </div>
+            <p className={styles.closer}>{commitment.closer}</p>
           </div>
         </section>
 
@@ -115,7 +76,7 @@ export default function Home() {
             </div>
 
             <figure className={styles.textCard}>
-              <div className={`box taped ${styles.slip}`}>
+              <div className={`box ${styles.slip}`}>
                 <p className={styles.textTitle}>{friday.messageTitle}</p>
                 {friday.message.map((para) => (
                   <p key={para} className={styles.textPara}>
@@ -163,7 +124,7 @@ export default function Home() {
               <p className="label">{cta.label}</p>
               <h2 id="cta-h" className={styles.ctaHeadline}>
                 {cta.headline.split(" ").slice(0, -1).join(" ")}{" "}
-                <span className="scribble">{cta.headline.split(" ").slice(-1)}</span>
+                {cta.headline.split(" ").slice(-1)}
               </h2>
               <p className={styles.lede}>{cta.body}</p>
             </div>

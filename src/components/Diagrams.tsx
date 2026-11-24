@@ -34,7 +34,7 @@ export function CrossedPyramid() {
         <path d="M81 15 L145 121 L15 123 Z" />
         <path d="M55 57 L107 56 M35 90 L126 91" />
       </g>
-      <g fill="none" stroke="var(--red-marker)" strokeWidth="11" strokeLinecap="round">
+      <g fill="none" stroke="var(--red)" strokeWidth="11" strokeLinecap="round">
         <path d="M22 22 C 60 55, 100 95, 138 126" />
         <path d="M137 18 C 100 55, 62 92, 24 127" />
       </g>

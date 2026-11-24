@@ -1,43 +1,23 @@
 /* ================= HERO ================= */
 .hero {
-  padding-block: clamp(36px, 6vw, 72px) clamp(48px, 7vw, 88px);
-}
-.heroGrid {
-  display: grid;
-  gap: 40px;
-  align-items: center;
+  padding-block: clamp(36px, 5vw, 72px) clamp(48px, 7vw, 96px);
 }
 /* Three fixed lines ("Your phone / doesn't get the / first word.").
-   The size is set so the longest line fits its column at every width. */
+   The size is set so the longest line fits the column at every width. */
 .heroHeadline {
-  font-size: clamp(2.35rem, 10.4vw, 4.6rem);
+  font-size: clamp(2.2rem, 10.2vw, 5.9rem);
   line-height: 1;
-  margin-bottom: clamp(20px, 3vw, 32px);
+  margin-bottom: clamp(20px, 3vw, 34px);
 }
 .heroLine {
   display: block;
   white-space: nowrap;
 }
-/* Red marker swipe behind the last line, slightly crooked and rough-ended. */
-.swipe {
-  position: relative;
-  display: inline-block;
-  padding: 0 0.12em;
-  margin-left: -0.12em;
-  margin-top: 0.08em;
-  z-index: 0;
-}
-.swipe::before {
-  content: "";
-  position: absolute;
-  inset: 0.12em -0.04em 0.02em -0.02em;
-  background: var(--red-marker);
-  z-index: -1;
-  rotate: -1.2deg;
-  clip-path: polygon(1% 8%, 22% 0, 51% 6%, 78% 1%, 100% 7%, 99% 94%, 74% 100%, 46% 93%, 19% 99%, 0 92%);
+.accent {
+  color: var(--red);
 }
 .heroBody {
-  max-width: 44ch;
+  max-width: 52ch;
   font-size: var(--step-1);
   line-height: 1.7;
 }
@@ -58,18 +38,6 @@
   margin-top: 28px;
 }
 
-/* The collage: edges fade into the page so it reads as pasted-down paper. */
-.illustration {
-  margin: 0;
-}
-.illustration img {
-  display: block;
-  width: 100%;
-  height: auto;
-  -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 62%, transparent 100%);
-  mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 62%, transparent 100%);
-}
-
 @media (max-width: 599px) {
   .hero {
     padding-top: 22px;
@@ -83,19 +51,6 @@
   .heroCtas .btn {
     flex: 1 1 100%;
     min-height: 52px;
-  }
-}
-
-@media (min-width: 1080px) {
-  .heroWithArt {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(24px, 3vw, 48px);
-  }
-  .heroWithArt .heroHeadline {
-    font-size: clamp(3.4rem, 5.3vw, 4.6rem);
-  }
-  .illustration {
-    margin-right: calc(var(--gutter) * -0.6);
   }
 }
 
@@ -137,38 +92,16 @@
 }
 
 /* Problem */
-.momentsWrap {
-  position: relative;
+/* The problem's heading is a full sentence, so it runs a size smaller. */
+.h2Long {
+  font-size: var(--step-3);
+  max-width: 26ch;
 }
-.problemNote {
-  margin: 28px 0 -12px auto;
-  width: fit-content;
-  font-size: var(--step-2);
-}
-@media (min-width: 760px) {
-  .problemNote {
-    position: absolute;
-    right: 0;
-    top: -1.9em;
-    margin: 0;
-  }
-}
-.moments {
-  list-style: none;
-  padding: 0;
-  margin: clamp(32px, 5vw, 52px) 0 40px;
-  border-top: var(--rule);
-}
-.moments li {
-  display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--ink);
+.prose {
+  max-width: 60ch;
+  margin-block: clamp(28px, 4vw, 44px);
   font-size: var(--step-1);
-}
-.momentTime {
-  font-weight: 700;
+  line-height: 1.75;
 }
 .closer {
   max-width: 36ch;
@@ -178,6 +111,7 @@
   font-size: var(--step-2);
   line-height: 1.2;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 /* The deal */
@@ -187,44 +121,16 @@
   color: var(--paper);
   border-top-color: var(--ink);
 }
-/* Stamp slapped across the section's top edge. */
-.dealStamp {
-  position: absolute;
-  top: -22px;
-  right: max(var(--gutter), calc((100% - var(--max)) / 2 + var(--gutter)));
+/* No visible heading: the commitment itself is the lead, set large. */
+.dealLead {
+  max-width: 22ch;
   margin: 0;
-  font-size: var(--step-1);
-}
-.dealItems {
-  list-style: none;
-  padding: 0;
-  margin: clamp(36px, 5vw, 56px) 0 36px;
-  border-top: 1px solid var(--paper);
-}
-.dealItems li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 8px clamp(16px, 3vw, 36px);
-  align-items: baseline;
-  padding: clamp(18px, 3vw, 28px) 0;
-  border-bottom: 1px solid var(--paper);
-}
-.dealNum {
-  font-weight: 700;
-  font-size: var(--step-1);
-}
-.dealTitle {
+  font-family: var(--font-head);
+  font-weight: 800;
   font-size: var(--step-3);
-}
-.dealNote {
-  margin: 10px 0 0;
-  font-size: var(--step-0);
-}
-.dealFine {
-  max-width: 52ch;
-  margin: 0;
-  font-size: var(--step-1);
-  line-height: 1.75;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
 /* Fridays */
@@ -253,8 +159,6 @@
 }
 .slip {
   background: var(--paper-light);
-  rotate: 1deg;
-  box-shadow: 4px 5px 0 rgba(17, 17, 17, 0.18);
 }
 .textTitle {
   font-weight: 700;
