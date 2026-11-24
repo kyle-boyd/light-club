@@ -1,37 +1,64 @@
 /* ================= HERO ================= */
 .hero {
-  padding-block: clamp(48px, 9vw, 120px);
+  padding-block: clamp(36px, 6vw, 72px) clamp(48px, 7vw, 88px);
 }
 .heroGrid {
   display: grid;
-  gap: 48px;
-  align-items: start;
+  gap: 40px;
+  align-items: center;
 }
+/* Three fixed lines ("Your phone / doesn't get the / first word.").
+   The size is set so the longest line fits its column at every width. */
 .heroHeadline {
-  font-size: clamp(2.6rem, 7.6vw, 6rem);
-  max-width: 12ch;
-  margin-bottom: clamp(24px, 4vw, 40px);
+  font-size: clamp(2.35rem, 10.4vw, 4.6rem);
+  line-height: 1;
+  margin-bottom: clamp(20px, 3vw, 32px);
+}
+.heroLine {
+  display: block;
+  white-space: nowrap;
+}
+/* Red marker swipe behind the last line, slightly crooked and rough-ended. */
+.swipe {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.12em;
+  margin-left: -0.12em;
+  margin-top: 0.08em;
+  z-index: 0;
+}
+.swipe::before {
+  content: "";
+  position: absolute;
+  inset: 0.12em -0.04em 0.02em -0.02em;
+  background: var(--red-marker);
+  z-index: -1;
+  rotate: -1.2deg;
+  clip-path: polygon(1% 8%, 22% 0, 51% 6%, 78% 1%, 100% 7%, 99% 94%, 74% 100%, 46% 93%, 19% 99%, 0 92%);
 }
 .heroBody {
   max-width: 44ch;
-  font-size: 1.15rem;
-  line-height: 1.75;
+  font-size: var(--step-1);
+  line-height: 1.7;
 }
 .heroScheme {
-  display: inline-block;
-  margin: 4px 0 0;
-  padding: 2px 8px;
+  display: inline;
+  padding: 3px 8px;
   background: var(--ink);
-  color: var(--paper);
+  color: var(--paper-light);
   font-weight: 700;
+  line-height: 2;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 .heroCtas {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 36px;
+  gap: 12px;
+  margin-top: 28px;
 }
 
+/* The collage: edges fade into the page so it reads as pasted-down paper. */
 .illustration {
   margin: 0;
 }
@@ -39,13 +66,36 @@
   display: block;
   width: 100%;
   height: auto;
+  -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 62%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 62%, transparent 100%);
 }
 
-@media (min-width: 900px) {
+@media (max-width: 599px) {
+  .hero {
+    padding-top: 22px;
+  }
+  .heroBody {
+    line-height: 1.55;
+  }
+  .heroCtas {
+    margin-top: 20px;
+  }
+  .heroCtas .btn {
+    flex: 1 1 100%;
+    min-height: 52px;
+  }
+}
+
+@media (min-width: 1080px) {
   .heroWithArt {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    gap: 64px;
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 3vw, 48px);
+  }
+  .heroWithArt .heroHeadline {
+    font-size: clamp(3.4rem, 5.3vw, 4.6rem);
+  }
+  .illustration {
+    margin-right: calc(var(--gutter) * -0.6);
   }
 }
 
@@ -54,18 +104,25 @@
   border-top: var(--rule-thick);
   padding-block: clamp(48px, 8vw, 104px);
 }
+/* Section heads: condensed, uppercase, poster-like. */
 .h2 {
-  font-size: clamp(2rem, 5.6vw, 4.2rem);
-  max-width: 16ch;
+  font-size: var(--step-4);
+  font-weight: 900;
+  font-stretch: 66%;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  word-spacing: 0;
+  max-width: 18ch;
 }
 .lede {
   max-width: 48ch;
-  font-size: 1.1rem;
+  font-size: var(--step-1);
   line-height: 1.75;
 }
 .caption {
   margin-top: 12px;
-  font-size: 0.9rem;
+  font-size: var(--step--1);
 }
 .twoCol {
   display: grid;
@@ -80,6 +137,22 @@
 }
 
 /* Problem */
+.momentsWrap {
+  position: relative;
+}
+.problemNote {
+  margin: 28px 0 -12px auto;
+  width: fit-content;
+  font-size: var(--step-2);
+}
+@media (min-width: 760px) {
+  .problemNote {
+    position: absolute;
+    right: 0;
+    top: -1.9em;
+    margin: 0;
+  }
+}
 .moments {
   list-style: none;
   padding: 0;
@@ -92,7 +165,7 @@
   gap: 16px;
   padding: 14px 0;
   border-bottom: 1px solid var(--ink);
-  font-size: 1.1rem;
+  font-size: var(--step-1);
 }
 .momentTime {
   font-weight: 700;
@@ -102,16 +175,25 @@
   margin: 0;
   font-family: var(--font-head);
   font-weight: 800;
-  font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+  font-size: var(--step-2);
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
 /* The deal */
 .deal {
+  position: relative;
   background: var(--ink);
   color: var(--paper);
   border-top-color: var(--ink);
+}
+/* Stamp slapped across the section's top edge. */
+.dealStamp {
+  position: absolute;
+  top: -22px;
+  right: max(var(--gutter), calc((100% - var(--max)) / 2 + var(--gutter)));
+  margin: 0;
+  font-size: var(--step-1);
 }
 .dealItems {
   list-style: none;
@@ -129,19 +211,19 @@
 }
 .dealNum {
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: var(--step-1);
 }
 .dealTitle {
-  font-size: clamp(1.8rem, 5vw, 3.6rem);
+  font-size: var(--step-3);
 }
 .dealNote {
   margin: 10px 0 0;
-  font-size: 1.05rem;
+  font-size: var(--step-0);
 }
 .dealFine {
   max-width: 52ch;
   margin: 0;
-  font-size: 1.1rem;
+  font-size: var(--step-1);
   line-height: 1.75;
 }
 
@@ -151,7 +233,7 @@
   padding-left: 1.6em;
   display: grid;
   gap: 14px;
-  font-size: 1.08rem;
+  font-size: var(--step-0);
 }
 .steps strong {
   font-weight: 700;
@@ -168,6 +250,11 @@
 }
 .textCard {
   margin: 0;
+}
+.slip {
+  background: var(--paper-light);
+  rotate: 1deg;
+  box-shadow: 4px 5px 0 rgba(17, 17, 17, 0.18);
 }
 .textTitle {
   font-weight: 700;
@@ -202,10 +289,22 @@
 }
 .diagrams {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: minmax(110px, 1fr) 2fr;
   gap: 24px;
   align-items: end;
   margin-top: 8px;
+}
+.diagrams .caption {
+  font-weight: 700;
+  font-size: var(--step-0);
+}
+@media (max-width: 559px) {
+  .diagrams {
+    grid-template-columns: 1fr;
+  }
+  .diagramSmall {
+    max-width: 150px;
+  }
 }
 .diagrams figure {
   margin: 0;
@@ -218,14 +317,19 @@
 
 /* CTA */
 .ctaHeadline {
-  font-size: clamp(3rem, 10vw, 7.5rem);
-  margin-bottom: 24px;
+  font-size: clamp(3.4rem, 11vw, 8rem);
+  font-weight: 900;
+  font-stretch: 66%;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
 }
 .noLink {
   align-self: end;
 }
 .noLinkTitle {
-  font-size: 1.6rem;
+  font-size: var(--step-2);
   text-transform: uppercase;
   margin-bottom: 12px;
 }

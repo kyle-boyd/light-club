@@ -60,16 +60,16 @@
   white-space: nowrap;
 }
 .nav a:hover {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--red);
+  color: var(--paper-light);
 }
 .nav a.navInvert {
   background: var(--ink);
   color: var(--paper);
 }
 .nav a.navInvert:hover {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--red);
+  color: var(--paper-light);
 }
 .nav a:focus-visible {
   outline-offset: -6px;
@@ -77,6 +77,14 @@
 
 /* Phones: wordmark on its own row, nav as a 2x2 grid of boxes underneath. */
 @media (max-width: 760px) {
+  .wordmark {
+    min-height: 0;
+    padding-block: 10px;
+  }
+  .nav a {
+    min-height: 46px;
+    padding: 8px 10px;
+  }
   .nav {
     flex-basis: 100%;
     border-top: var(--rule);

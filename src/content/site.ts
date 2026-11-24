@@ -20,22 +20,28 @@ export const nav = [
 
 export const hero = {
   kicker: "An accountability movement for people who are tired of being owned",
-  headline: "Your phone doesn't get the first word.",
+  // One entry per line, so the breaks are deliberate at every width.
+  // The last line gets the red marker swipe.
+  headline: ["Your phone", "doesn't get the", "first word."],
   stamp: "We're taking it back. With a pyramid scheme.",
   body:
     "Every day, before you look at or touch your phone, you read a physical Bible and you pray. On Friday mornings you tell a few friends how it went. That's it. That's the club.",
   primaryCta: "I have an invitation",
   secondaryCta: "How it works",
-  // Hand-drawn hero illustration. Drop the file at public/illustrations/hero.png;
-  // until it exists, the hero is a single column.
+  // Hero art. STAND-IN: cropped from a design mockup; replace with a
+  // high-res version (no cross on the Bible) at the same path.
+  // If the file is missing, the hero falls back to a single column.
   illustration: {
-    src: "/illustrations/hero.png",
-    alt: "A hand-drawn sketch: a phone face-down on a nightstand while someone reads a Bible.",
+    src: "/illustrations/hero.jpg",
+    width: 1200,
+    height: 622,
+    alt: "Photocopied collage: a worn Bible and a smartphone side by side, with a red X slashed behind them.",
   },
 };
 
 export const problem = {
   label: "The problem",
+  note: "every. single. time.",
   headline: "It's not just how much time it takes. It's that it gets there first.",
   moments: [
     { time: "6:02 AM", text: "Before your feet hit the floor." },
@@ -49,6 +55,7 @@ export const problem = {
 
 export const commitment = {
   label: "The deal",
+  stamp: "7 days a week",
   headline: "Every day. Before the phone.",
   items: [
     { n: "01", title: "Read a physical Bible.", note: "Paper. Pages. The kind with no notifications." },

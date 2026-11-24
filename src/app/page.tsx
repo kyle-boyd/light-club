@@ -6,7 +6,7 @@ import Image from "next/image";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
-// Checked at build time: the hero only gets a second column once the drawing exists.
+// Checked at build time: the hero only gets a second column if the art exists.
 const hasIllustration = existsSync(path.join(process.cwd(), "public", hero.illustration.src));
 
 export default function Home() {
@@ -19,7 +19,11 @@ export default function Home() {
           <div className={`wrap ${styles.heroGrid} ${hasIllustration ? styles.heroWithArt : ""}`}>
             <div>
               <h1 id="hero-h" className={styles.heroHeadline}>
-                {hero.headline}
+                {hero.headline.map((line, i) => (
+                  <span key={line} className={styles.heroLine}>
+                    {i === hero.headline.length - 1 ? <span className={styles.swipe}>{line}</span> : line}{" "}
+                  </span>
+                ))}
               </h1>
               <p className={styles.heroBody}>{hero.body}</p>
               <p className={styles.heroScheme}>{hero.stamp}</p>
@@ -38,10 +42,10 @@ export default function Home() {
                 <Image
                   src={hero.illustration.src}
                   alt={hero.illustration.alt}
-                  width={1200}
-                  height={1200}
+                  width={hero.illustration.width}
+                  height={hero.illustration.height}
                   priority
-                  sizes="(min-width: 900px) 40vw, 100vw"
+                  sizes="(min-width: 900px) 45vw, 100vw"
                 />
               </figure>
             ) : null}
@@ -54,20 +58,24 @@ export default function Home() {
             <h2 id="problem-h" className={styles.h2}>
               {problem.headline}
             </h2>
-            <ol className={styles.moments}>
+            <div className={styles.momentsWrap}>
+              <p className={`hand-note ${styles.problemNote}`}>{problem.note}</p>
+              <ol className={styles.moments}>
               {problem.moments.map((m) => (
                 <li key={m.time}>
                   <span className={styles.momentTime}>{m.time}</span>
                   <span>{m.text}</span>
                 </li>
               ))}
-            </ol>
+              </ol>
+            </div>
             <p className={styles.closer}>{problem.closer}</p>
           </div>
         </section>
 
         <section id="the-deal" className={`on-ink ${styles.section} ${styles.deal}`} aria-labelledby="deal-h">
           <div className="wrap">
+            <p className={`stamp ${styles.dealStamp}`}>{commitment.stamp}</p>
             <p className="label">{commitment.label}</p>
             <h2 id="deal-h" className={styles.h2}>
               {commitment.headline}
@@ -107,7 +115,7 @@ export default function Home() {
             </div>
 
             <figure className={styles.textCard}>
-              <div className="box">
+              <div className={`box taped ${styles.slip}`}>
                 <p className={styles.textTitle}>{friday.messageTitle}</p>
                 {friday.message.map((para) => (
                   <p key={para} className={styles.textPara}>
@@ -136,7 +144,7 @@ export default function Home() {
                 </ul>
               </div>
               <div className={styles.diagrams}>
-                <figure>
+                <figure className={styles.diagramSmall}>
                   <CrossedPyramid />
                   <figcaption className={styles.caption}>{network.diagram.sounds}</figcaption>
                 </figure>
@@ -154,7 +162,8 @@ export default function Home() {
             <div>
               <p className="label">{cta.label}</p>
               <h2 id="cta-h" className={styles.ctaHeadline}>
-                {cta.headline}
+                {cta.headline.split(" ").slice(0, -1).join(" ")}{" "}
+                <span className="scribble">{cta.headline.split(" ").slice(-1)}</span>
               </h2>
               <p className={styles.lede}>{cta.body}</p>
             </div>
