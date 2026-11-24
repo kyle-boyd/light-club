@@ -2,6 +2,12 @@ import { commitment, cta, friday, hero, network, problem } from "@/content/site"
 import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { OverlappingCrews, CrossedPyramid } from "@/components/Diagrams";
 import styles from "./page.module.css";
+import Image from "next/image";
+import { existsSync } from "node:fs";
+import path from "node:path";
+
+// Checked at build time: the hero only gets a second column once the drawing exists.
+const hasIllustration = existsSync(path.join(process.cwd(), "public", hero.illustration.src));
 
 export default function Home() {
   return (
@@ -10,7 +16,7 @@ export default function Home() {
 
       <main id="main">
         <section className={styles.hero} aria-labelledby="hero-h">
-          <div className={`wrap ${styles.heroGrid}`}>
+          <div className={`wrap ${styles.heroGrid} ${hasIllustration ? styles.heroWithArt : ""}`}>
             <div>
               <h1 id="hero-h" className={styles.heroHeadline}>
                 {hero.headline}
@@ -27,15 +33,18 @@ export default function Home() {
               </div>
             </div>
 
-            <aside className={`box ${styles.notice}`} aria-label="Notice">
-              <p className={styles.noticeTitle}>{hero.notice.title}</p>
-              {hero.notice.lines.map((l) => (
-                <p key={l} className={styles.noticeLine}>
-                  {l}
-                </p>
-              ))}
-              <p className={styles.noticeSign}>{hero.notice.signoff}</p>
-            </aside>
+            {hasIllustration ? (
+              <figure className={styles.illustration}>
+                <Image
+                  src={hero.illustration.src}
+                  alt={hero.illustration.alt}
+                  width={1200}
+                  height={1200}
+                  priority
+                  sizes="(min-width: 900px) 40vw, 100vw"
+                />
+              </figure>
+            ) : null}
           </div>
         </section>
 

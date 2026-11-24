@@ -10,9 +10,6 @@ export const brand = {
   footerJoke: "Not affiliated with your phone.",
 };
 
-// The black strip across the top of every page.
-export const ticker = ["Phone last", "Bible first", "Pray first", "Fridays: X/7", "No app", "No leaders"];
-
 // Header navigation. The last item is shown inverted.
 export const nav = [
   { label: "The deal", href: "/#the-deal" },
@@ -29,10 +26,11 @@ export const hero = {
     "Every day, before you look at or touch your phone, you read a physical Bible and you pray. On Friday mornings you tell a few friends how it went. That's it. That's the club.",
   primaryCta: "I have an invitation",
   secondaryCta: "How it works",
-  notice: {
-    title: "Notice",
-    lines: ["This phone has been demoted.", "It no longer gets the first word."],
-    signoff: "— The Management (there is no management)",
+  // Hand-drawn hero illustration. Drop the file at public/illustrations/hero.png;
+  // until it exists, the hero is a single column.
+  illustration: {
+    src: "/illustrations/hero.png",
+    alt: "A hand-drawn sketch: a phone face-down on a nightstand while someone reads a Bible.",
   },
 };
 

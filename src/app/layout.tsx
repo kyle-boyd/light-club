@@ -3,8 +3,8 @@ import { Archivo, Courier_Prime } from "next/font/google";
 import "./globals.css";
 import { brand } from "@/content/site";
 
-// Archivo's width axis gives us the wide, heavy grotesk for headlines.
-const sans = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--font-sans" });
+// Plain heavy grotesk for headlines; monospace for everything else.
+const sans = Archivo({ subsets: ["latin"], variable: "--font-sans" });
 const mono = Courier_Prime({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
